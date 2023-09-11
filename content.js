@@ -4,9 +4,10 @@ browser.runtime.onMessage.addListener((request) => {
     if ('fetch-id' in request) {
         var d = document.getElementById(request['fetch-id']);
         if (d) {
+            console.log("Fetching:" + d.id);
             return Promise.resolve({
                 failed: false,
-                style: JSON.stringify(window.getComputedStyle(d))
+                html: headwindcss(d)
             });
         } else {
             return Promise.resolve({
