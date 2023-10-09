@@ -1,5 +1,4 @@
 console.log("HeadwindCSS Here!");
-
 browser.runtime.onMessage.addListener((request) => {
     if ('fetch-id' in request) {
         var d = document.getElementById(request['fetch-id']);
