@@ -16,6 +16,7 @@ document.getElementById('fetch').onclick = async function () {
           error("failed to fetch active tab for windowId:" + windowInfo.id)
         } else {
           console.log("fetching:" + domId);
+          
           browser.tabs.sendMessage(tabs[0].id, { 'fetch-id': domId }).then((response) => {
             if (!response.failed) {
               document.getElementById('result').value = response.html;

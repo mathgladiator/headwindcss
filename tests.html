@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headwind Tests</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="test-cases">
+        <div class="test-case min-w-{40%} flex flex-col items-center">
+            <h2>Tailwind Example</h2>
+            <div class="inner flex items-center justify-center border-2 border-black self-stretch aspect-square">
+                <button class="px-4 py-2 font-semibold text-sm bg-white text-slate-700 dark:bg-slate-700 dark:text-white rounded-md shadow-sm ring-1 ring-slate-900/5 border-indigo-500 dark:border-sky-500 border-4 border-double">Button A</button>
+            </div>
+            <button class="convert rounded-lg bg-green-500 font-bold text-white p-2 px-3">Convert</button>
+            <div class="output"></div>
+        </div>
+        <div class="test-case min-w-{40%} flex flex-col items-center">
+            <h2>Tailwind Example</h2>
+            <div class="inner flex items-center justify-center border-2 border-black self-stretch aspect-square">
+                <a href="https://dashboard.column.com/register" type="link" variant="primary" id="testelem" class="flex relative justify-center items-normal m-px px-4 font-medium leading-4 text-center text-white decoration-white whitespace-nowrap bg-[#111a4a] rounded-lg outline-white"><span class="flex relative z-[1] gap-1 items-normal leading-none">Start building <svg viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class=""><path d="M8 13L13 8L8 3" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" class=""></path><path d="M12 8L2 8" stroke-width="1.5" class=""></path></svg></span></a>
+            </div>
+            <button class="convert rounded-lg bg-green-500 font-bold text-white p-2 px-3">Convert</button>
+            <div class="output"></div>
+            
+        </div>
+        <div class="test-case min-w-{40%} flex flex-col items-center">
+            <h2>Tailwind Example</h2>
+            <div class="inner flex items-center justify-center border-2 border-black self-stretch aspect-square">
+                <a href="https://dashboard.column.com/register" type="link" variant="primary" id="testelem" class="Button__StyledOutboundLink-sc-fltzk0-2 gSquuv"><span class="Button__ButtonText-sc-fltzk0-0 joZKAe">Start building <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="Base__Svg-sc-ta5t7f-0 icon--stroke icon-animated-arrow-right"><path class="icon-animated-arrow-right--chevron" d="M8 13L13 8L8 3" style="stroke:var(--icon-base-color)" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"></path><path class="icon-animated-arrow-right--stem" d="M12 8L2 8" style="stroke:var(--icon-base-color)" stroke-width="1.5"></path></svg></span></a>
+            </div>
+            <button class="convert rounded-lg bg-green-500 font-bold text-white p-2 px-3">Convert</button>
+        <div class="output"></div>
+    </div>
+
+
+</body>
+<script src="engine.js" ></script>
+<script>
+    const testCases = document.querySelectorAll(".test-case");
+    testCases.forEach((testCase) => {
+        const test = testCase.querySelector(".inner").firstElementChild;
+        const convertBut = testCase.querySelector(".convert");
+        const output = testCase.querySelector(".output");
+        convertBut.addEventListener("click", (e)=> {
+            output.textContent = headwindcss(test);
+        })
+    })
+
+
+</script>
+</html>
