@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-bottom: rem(15);
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    color: $primary;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s;
+    &:hover {
+        color: $secondary;
+    }
+    &:visited {
+        color: $primary ;
+    }
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

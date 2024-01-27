@@ -1,0 +1,35 @@
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .main-menu {
+        ul {
+            display: flex;
+            gap: 25px;
+
+            li {
+                a {
+                    color: #fff;
+                    transition: all 0.5s;
+
+                    &:hover {
+                        color: $secondary;
+                    }
+                }
+            }
+        }
+    }
+
+    .mobile-nav {
+        background: $secondary;
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 10px;
+        ul {
+            li {
+                margin: 10px 0;
+            }
+        }
+    }
+}
