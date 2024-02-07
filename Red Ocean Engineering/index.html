@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Ocean Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/sass/main.css">
+</head>
+<body>
+    <header>
+        <div class="desktop-menu md:block hidden">
+            <div class="container mx-auto px-3 py-2 grid grid-cols-3 gap-4">
+                <nav class="col-span-1 flex items-center main-menu">
+                    <ul>
+                        <li><a href="#">Product</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Marketplace</a></li>
+                        <li><a href="#">Company</a></li>
+                    </ul>
+                </nav>
+
+                <div class="col-span-1 flex items-center justify-center">
+                    <a href="/" class="text-white text-lg font-semibold">
+                        <img src="assets/images/logo.png" alt="">
+                    </a>
+                </div>
+
+                <div class="col-span-1 flex items-center justify-end space-x-4">
+                    <a href="login.html" class="arrow-link">Login</a>
+                    <a href="register.html" class="th-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu md:hidden">
+            <nav>
+                <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="assets/images/logo.png" class="h-14" alt="Red Ocean Engineering" />
+                    </a>
+                    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+                        </svg>
+                    </button>
+                    <div class="hidden w-full md:block md:w-auto mobile-nav" id="navbar-default">
+                        <ul>
+                            <li><a href="#">Product</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Marketplace</a></li>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container flex items-center justify-center mx-auto">
+            <div class="content-block text-center">
+                <h1>Unleash the Power of Red Ocean Engineering</h1>
+                <p class="my-8">Welcome to Red Ocean Engineering, where innovation meets aggression. We are the
+                    hard-core software firm with a relentless focus on wealth creation</p>
+                <div class="flex items-center justify-center space-x-4">
+                    <a href="register.html" class="th-btn">Get Started</a>
+                    <a href="terms-and-conditions.html" class="arrow-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="entrepreneur">
+        <div class="container mx-auto px-5 grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-2">
+            <div class="flex items-center justify-center md:order-1">
+                <div class="img-shape btm left">
+                    <img src="assets/images/home-image-1.png" alt="Image Description"
+                        class="max-w-full h-auto rounded ">
+                </div>
+            </div>
+            <div class="flex flex-col items-start justify-center">
+                <h2>For the entrepreneur</h2>
+                <div class="content">
+                    <p>Engineering is un-fucking-believably expensive and high risk! Red Ocean Engineering is a
+                        hard-core software engineering firm with world class engineers focused on wealth creation. We
+                        build assets! Our model is simple. We are a fractionalized CTO-as-a-service where we take equity
+                        in your company and provide you with end-game talent in both strategy, tactics, and creativity.
+                    </p>
+                    <p>We eliminate the technical risk. However, we are not deck builders looking to build decks; we
+                        push back and make sure you are running experiments as every business is a hypothesis until
+                        revenue kicks in.</p>
+                </div>
+                <a href="register.html" class="th-btn mt-6">Sign in to learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="entrepreneur bg-1">
+        <div class="container mx-auto px-5 grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-2">
+            <div class="flex items-center justify-center">
+                <img src="assets/images/home-image-2.png" alt="Image Description" class="max-w-full h-auto rounded">
+            </div>
+            <div class="flex flex-col items-start justify-center">
+                <h2>For the engineer</h2>
+                <div class="content">
+                    <p>Wouldn’t it be nice to be one of those unicorn engineers making seven figures? Fuck yeah it is,
+                        but there are only a handful of companies that can reliability make that happen. Worse yet,
+                        acquiring the skills to be in that position is rare. We can help you get next level skills that
+                        stand out, and with a bit of luck…</p>
+                    <p class="text-red capitalize font-bold">get you rich in the process.</p>
+                </div>
+                <a href="register.html" class="th-btn mt-6">Sign in to learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="entrepreneur">
+        <div class="container mx-auto px-5 grid md:grid-cols-2 md:grid-cols-1 md:gap-8 gap-2">
+            <div class="flex items-center justify-center col-span-1 md:order-1">
+                <div class="img-with-tooltip">
+
+                    <div class="img-shape btm right img-block">
+                        <img src="assets/images/home-image-3.png" alt="Image Description"
+                            class="max-w-full h-auto rounded">
+                    </div>
+                    <div class="tooltip-content">
+                        <div class="content-wrapper">
+                            <p>Well, stop fucking around with complexity and do some amazing shit with DreadnaughtDB in the simplest way possible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col items-start justify-center col-span-1 ">
+                <h2>The flag ship: <br>DreadnaughtDB</h2>
+                <div class="content">
+                    <p>Ever used a database so awesome that using it will impregnate your mom via time travel. That’s
+                        right, we are building a platform as a service that redefines the game. Look, it’s about getting
+                        shit done, right?</p>
+                </div>
+
+                <a href="register.html" class="th-btn mt-6">Sign in to learn more about Dreadnaught</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container mx-auto text-center px-5">
+            <div class="content-block">
+                <h2>Unlock the Power of Red Ocean CRM</h2>
+                <div class="content">
+                    <p><strong>A Smarter Way to Connect, Engage, and Prosper</strong></p>
+                    <p>Welcome to Red Ocean CRM, your gateway to a revolutionary way of managing relationships and
+                        unlocking business potential. Join our community by registering below and be part of a select
+                        group shaping the future of innovative solutions.</p>
+                </div>
+                <a href="register.html" class="th-btn light mt-6">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="entrepreneur bg-2">
+        <div class="container mx-auto px-5 grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-2">
+            <div class="flex items-center justify-center md:order-1">
+                <img src="assets/images/home-image-4.png" alt="Image Description" class="max-w-full h-auto rounded ">
+            </div>
+            <div class="flex flex-col items-start justify-center">
+                <h2>Dive Deeper into Red Ocean CRM</h2>
+                <div class="content">
+                    <p>In this era of unprecedented connectivity, Red Ocean CRM stands as a beacon of efficiency and
+                        effectiveness. Our CRM empowers you to streamline interactions, understand your audience, and
+                        make informed decisions. As we embark on this journey, I'll be sharing insights, strategies, and
+                        the vision behind Red Ocean CRM in an upcoming essay. Stay tuned for an in-depth exploration of
+                        how Red Ocean Engineering is revolutionizing the way we connect and do business.</p>
+                </div>
+                <a href="#" class="th-btn mt-6">Coming Soon (Essay)</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container px-5 mx-auto text-center">
+            <div class="ft-logo mx-auto table">
+                <img src="assets/images/logo.png" alt="">
+            </div>
+            <div class="ft-content mt-10">
+                <address class="mb-5">© 2023 Tailwind Labs Inc. All rights reserved.</address>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms and Conditions</a></li>
+                    <li><a href="#">Help & Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

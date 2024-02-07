@@ -1,0 +1,21 @@
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $max: map-get(
+            $map: map-get($breakpoints, $breakpoint),
+            $key: max,
+        );
+        $min: map-get(
+            $map: map-get($breakpoints, $breakpoint),
+            $key: min,
+        );
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. " + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+@function rem($x) {
+    @return calc($x / 16) + rem;
+}

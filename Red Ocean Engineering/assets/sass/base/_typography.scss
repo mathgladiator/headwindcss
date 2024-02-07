@@ -1,0 +1,104 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: $primary;
+    background-color: #171717;
+    background-image: url(../images/body.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+
+    @include respond-to(md) {
+        font-size: rem(15);
+    }
+
+    @include respond-to(sm) {
+        font-size: rem(14);
+    }
+
+    @include respond-to(xs) {
+        font-size: rem(13);
+    }
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1.2;
+
+    @include respond-to(md) {
+        font-size: rem(50);
+    }
+
+    @include respond-to(sm) {
+        font-size: rem(36);
+    }
+
+    @include respond-to(xs) {
+        font-size: rem(36);
+    }
+}
+
+
+h2 {
+    font-size: rem(50);
+    color: $primary;
+    margin-bottom: 0;
+    font-weight: bold;
+
+    @include respond-to(md) {
+        font-size: rem(40);
+    }
+
+    @include respond-to(sm) {
+        font-size: rem(32);
+    }
+
+    @include respond-to(xs) {
+        font-size: rem(24);
+        margin-bottom: 0;
+    }
+}
+
+h3 {
+    font-size: rem(36);
+    color: $primary;
+
+    @include respond-to(md) {
+        font-size: rem(28);
+    }
+
+    @include respond-to(sm) {
+        font-size: rem(24);
+    }
+
+    @include respond-to(xs) {
+        font-size: rem(20);
+    }
+}
+
+h4 {
+    font-size: rem(22);
+    color: $primary;
+
+    @include respond-to(md) {
+        font-size: rem(20);
+    }
+
+    @include respond-to(sm) {
+        font-size: rem(18);
+    }
+
+    @include respond-to(xs) {
+        font-size: rem(16);
+    }
+}
+
+p {
+    color: $tertiary;
+    line-height: 1.8;
+}
+
+.text-red {
+    color: $secondary;
+}
+

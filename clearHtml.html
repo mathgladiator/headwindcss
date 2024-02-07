@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+	<style>
+	</style>
+</head>
+<body style="height: 1000px">
+	<div></div>
+</body>
+<script>
+//     const allElements = `a
+// abbr
+// address
+// area
+// article
+// aside
+// audio
+// b
+// bdi
+// bdo
+// blockquote
+// body
+// br
+// button
+// canvas
+// caption
+// cite
+// code
+// col
+// colgroup
+// command
+// datalist
+// dd
+// del
+// details
+// dfn
+// div
+// dl
+// dt
+// em
+// embed
+// fieldset
+// figcaption
+// figure
+// footer
+// form
+// h1
+// h2
+// h3
+// h4
+// h5
+// h6
+// header
+// hr
+// html
+// i
+// iframe
+// img
+// input
+// ins
+// kbd
+// keygen
+// label
+// legend
+// li
+// main
+// map
+// mark
+// menu
+// meter
+// nav
+// object
+// ol
+// optgroup
+// option
+// output
+// p
+// param
+// pre
+// progress
+// q
+// rp
+// rt
+// ruby
+// s
+// samp
+// section
+// select
+// small
+// source
+// span
+// strong
+// sub
+// summary
+// sup
+// table
+// tbody
+// td
+// textarea
+// tfoot
+// th
+// thead
+// time
+// tr
+// track
+// u
+// ul
+// var
+// video
+// wbr`.split("\n")
+
+// /*
+// After and Before Brainstorm
+// 1. Have a default before afters and inherited's and compare to the current computed.
+// 2. Use above to just see existense of before/after
+
+// #1 seems the best, but it will also need to be used for the following pseudoelements
+// - Before
+// - After
+// - Placeholder
+// - File Selector Button
+// - Marker
+// - Selection
+// - First Line (Notice how these effect the original element)
+// - First Letter (Notice how these effect the original element)
+// - Backdrop
+
+// */
+// const pseudoElems = ["before", "after", "placeholder", "file-selector-button", "marker", "selection", "first-line", "first-letter", "backdrop"];
+// // Check for the difference between this and before, and also default div element.
+
+
+// const original = {
+// 	"aspect-ratio" : "auto",
+// 	"columns" : "auto",
+// 	"break-after" : "auto",
+// 	"break-before" : "auto",
+// 	"break-inside" : "auto",
+// 	"box-decoration-break" : "slice",
+// 	"box-sizing" : "border-box",
+// 	"display" : "block",
+// 	"float" : "none",
+// 	"clear" : "none",
+// 	"isolation" : "auto",
+// 	"object-fit" : "fill",
+// 	"object-position" : "50% 50%",
+// 	"overflow" : "visible",
+// 	"overflow-x" : "visible",
+// 	"overflow-y" : "visible",
+// 	"overscroll-behavior" : "auto",
+// 	"overscroll-behavior-x" : "auto",
+// 	"overscroll-behavior-y" : "auto",
+// 	"position" : "static",
+// 	"inset" : "auto",
+// 	"left" : "auto",
+// 	"right" : "auto",
+// 	"top" : "auto",
+// 	"bottom" : "auto",
+// 	"inset-inline" : "auto",
+// 	"inset-block" : "auto",
+// 	"visibility" : "visible",
+// 	"z-index" : "auto",
+// 	"flex-basis" : "auto",
+// 	"flex-direction" : "row",
+// 	"flex-wrap" : "nowrap",
+// 	"flex" : "0 1 auto",
+// 	"flex-grow" : "0",
+// 	"flex-shrink" : "1",
+// 	"order" : "0",
+// 	"grid-template-columns" : "none",
+// 	"grid-column" : "auto",
+// 	"grid-column-start" : "auto",
+// 	"grid-column-end" : "auto",
+// 	"grid-template-rows" : "none",
+// 	"grid-row" : "auto",
+// 	"grid-row-start" : "auto",
+// 	"grid-row-end" : "auto",
+// 	"grid-auto-flow" : "row",
+// 	"grid-auto-columns" : "auto",
+// 	"grid-auto-rows" : "auto",
+// 	"gap" : "normal",
+// 	"column-gap" : "normal",
+// 	"row-gap" : "normal",
+// 	"justify-content" : "normal",
+// 	"justify-items" : "normal",
+// 	"justify-self" : "auto",
+// 	"align-content" : "normal",
+// 	"align-items" : "normal",
+// 	"align-self" : "auto",
+// 	"place-content" : "normal",
+// 	"place-items" : "normal legacy",
+// 	"place-self" : "auto",
+// 	"padding" : "0px",
+// 	"padding-left" : "0px",
+// 	"padding-right" : "0px",
+// 	"padding-top" : "0px",
+// 	"padding-bottom" : "0px",
+// 	"padding-inline-start" : "0px",
+// 	"padding-inline-end" : "0px",
+// 	"padding-block-start" : "0px",
+// 	"padding-block-end" : "0px",
+// 	"margin" : "0px",
+// 	"margin-left" : "0px",
+// 	"margin-right" : "0px",
+// 	"margin-top" : "0px",
+// 	"margin-bottom" : "0px",
+// 	"margin-inline" : "0px",
+// 	"margin-block" : "0px",
+// 	"margin-inline-start" : "0px",
+// 	"margin-inline-end" : "0px",
+// 	"width" : "auto",
+// 	"min-width" : "0px",
+// 	"max-width" : "none",
+// 	"height" : "auto",
+// 	"min-height" : "0px",
+// 	"max-height" : "none",
+// 	"font-family" : "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+// 	"font-size" : "16px",
+// 	"line-height" : "24px",
+// 	"font-style" : "normal",
+// 	"font-weight" : "400",
+// 	"font-variant-numeric" : "normal",
+// 	"letter-spacing" : "normal",
+// 	"-webkit-box-orient" : "horizontal",
+// 	"-webkit-line-clamp" : "none",
+// 	"list-style-image" : "none",
+// 	"list-style-position" : "outside",
+// 	"list-style-type" : "disc",
+// 	"text-align" : "start",
+// 	"color" : "rgb(0, 0, 0)",
+// 	"text-decoration-line" : "none",
+// 	"text-decoration-color" : "currentcolor",
+// 	"text-decoration-style" : "solid",
+// 	"text-decoration-thickness" : "auto",
+// 	"text-underline-offset" : "auto",
+// 	"text-transform" : "none",
+// 	"text-overflow" : "clip",
+// 	"white-space" : "normal",
+// 	"text-indent" : "0px",
+// 	"vertical-align" : "baseline",
+// 	"overflow-wrap" : "normal",
+// 	"word-break" : "normal",
+// 	"hyphens" : "manual",
+// 	"content" : "normal",
+// 	"background-attachment" : "scroll",
+// 	"background-clip" : "border-box",
+// 	"background-color" : "rgba(0, 0, 0, 0)",
+// 	"background-origin" : "padding-box",
+// 	"background-position" : "0% 0%",
+// 	"background-repeat" : "repeat",
+// 	"background-size" : "auto",
+// 	"background-image" : "none",
+// 	"border-radius" : "0px",
+// 	"border-start-start-radius" : "0px",
+// 	"border-end-start-radius" : "0px",
+// 	"border-start-end-radius" : "0px",
+// 	"border-end-end-radius" : "0px",
+// 	"border-top-left-radius" : "0px",
+// 	"border-top-right-radius" : "0px",
+// 	"border-bottom-left-radius" : "0px",
+// 	"border-bottom-right-radius" : "0px",
+// 	"border-width" : "0px",
+// 	"border-left-width" : "0px",
+// 	"border-right-width" : "0px",
+// 	"border-top-width" : "0px",
+// 	"border-bottom-width" : "0px",
+// 	"border-inline-start-width" : "0px",
+// 	"border-inline-end-width" : "0px",
+// 	"border-color" : "rgb(229, 231, 235)",
+// 	"border-left-color" : "rgb(229, 231, 235)",
+// 	"border-right-color" : "rgb(229, 231, 235)",
+// 	"border-top-color" : "rgb(229, 231, 235)",
+// 	"border-bottom-color" : "rgb(229, 231, 235)",
+// 	"border-inline-start-color" : "rgb(229, 231, 235)",
+// 	"border-inline-end-color" : "rgb(229, 231, 235)",
+// 	"border-style" : "solid",
+// 	"outline-width" : "0px",
+// 	"outline-color" : "currentcolor",
+// 	"outline-style" : "none",
+// 	"outline" : "currentcolor 0px",
+// 	"outline-offset" : "0px",
+// 	"box-shadow" : "none",
+// 	"opacity" : "1",
+// 	"mix-blend-mode" : "normal",
+// 	"background-blend-mode" : "normal",
+// 	"filter" : "none",
+// 	"backdrop-filter" : "none",
+// 	"border-collapse" : "separate",
+// 	"border-spacing" : "0px 0px",
+// 	"table-layout" : "auto",
+// 	"caption-side" : "top",
+// 	"transition-property" : "all",
+// 	"transition-timing-function" : "ease",
+// 	"transition-duration" : "0s",
+// 	"transition-delay" : "0s",
+// 	"animation" : "0s ease 0s 1 normal none running none",
+// 	"transform" : "none",
+// 	"transform-origin" : "50% 50%",
+// 	"accent-color" : "auto",
+// 	"appearance" : "none",
+// 	"cursor" : "auto",
+// 	"caret-color" : "currentcolor",
+// 	"pointer-events" : "auto",
+// 	"resize" : "none",
+// 	"scroll-behavior" : "auto",
+// 	"scroll-margin" : "0px",
+// 	"scroll-margin-left" : "0px",
+// 	"scroll-margin-right" : "0px",
+// 	"scroll-margin-top" : "0px",
+// 	"scroll-margin-bottom" : "0px",
+// 	"scroll-margin-inline-start" : "0px",
+// 	"scroll-margin-inline-end" : "0px",
+// 	"scroll-padding" : "auto",
+// 	"scroll-padding-left" : "auto",
+// 	"scroll-padding-right" : "auto",
+// 	"scroll-padding-inline-start" : "auto",
+// 	"scroll-padding-inline-end" : "auto",
+// 	"scroll-padding-top" : "auto",
+// 	"scroll-padding-bottom" : "auto",
+// 	"scroll-snap-align" : "none",
+// 	"scroll-snap-stop" : "normal",
+// 	"scroll-snap-type" : "none",
+// 	"touch-action" : "auto",
+// 	"user-select" : "auto",
+// 	"will-change" : "auto",
+// }
+
+// //To keep it shorter, keep original, and just keep differences
+// // Check for differences among all tested pseudo-elements eventually.
+
+
+const importantValues = [
+	"aspect-ratio", "columns", "break-after", "break-before", "break-inside", "box-decoration-break", "box-sizing", "display", "float", "clear",
+	"isolation", "object-fit", "object-position", "overflow", "overflow-x", "overflow-y", "overscroll-behavior", "overscroll-behavior-x", "overscroll-behavior-y",
+	"position", "inset", "left", "right", "top", "bottom", "inset-inline", "inset-block", "visibility", "z-index", "flex-basis", "flex-direction", "flex-wrap", 
+	"flex", "flex-grow", "flex-shrink", "order", "grid-template-columns", "grid-column", "grid-column-start","grid-column-end","grid-template-rows", "grid-row",
+	"grid-row-start", "grid-row-end", "grid-auto-flow", "grid-auto-columns", "grid-auto-rows", "gap", "column-gap", "row-gap", "justify-content",
+	"justify-items", "justify-self", "align-content", "align-items", "align-self", "place-content", "place-items", "place-self", "padding",
+	"padding-left", "padding-right", "padding-top", "padding-bottom", "padding-inline-start", "padding-inline-end", "padding-block-start", "padding-block-end", "margin", "margin-left",
+	"margin-right", "margin-top", "margin-bottom", "margin-inline", "margin-block", "margin-inline-start", "margin-inline-end", "width", "min-width", "max-width", "height",
+	"min-height", "max-height", "font-family", "font-size", "line-height", "font-style", "font-weight", "font-variant-numeric", "letter-spacing",
+	"-webkit-box-orient", "-webkit-line-clamp", "list-style-image", "list-style-position", "list-style-type", "text-align", "color", "text-decoration-line",
+	"text-decoration-color", "text-decoration-style", "text-decoration-thickness", "text-underline-offset", "text-transform", "text-overflow", "white-space",
+	"text-indent", "vertical-align", "overflow-wrap", "word-break", "hyphens", "content", "background-attachment", "background-clip", "background-color",
+	"background-origin", "background-position", "background-repeat", "background-size", "background-image", "border-radius", "border-start-start-radius",
+	"border-end-start-radius", "border-start-end-radius", "border-end-end-radius", "border-top-left-radius", "border-top-right-radius", "border-bottom-left-radius",
+	"border-bottom-right-radius", "border-width", "border-left-width", "border-right-width", "border-top-width", "border-bottom-width", "border-inline-start-width",
+	"border-inline-end-width", "border-color", "border-left-color", "border-right-color", "border-top-color", "border-bottom-color", "border-inline-start-color",
+	"border-inline-end-color", "border-style", "outline-width", "outline-color", "outline-style", "outline", "outline-offset", "box-shadow", "opacity",
+	"mix-blend-mode", "background-blend-mode", "filter", "backdrop-filter", "border-collapse", "border-spacing", "table-layout", "caption-side",
+	"transition-property", "transition-timing-function", "transition-duration", "transition-delay", "animation", "transform", "transform-origin",
+	"accent-color", "appearance", "cursor", "caret-color", "pointer-events", "resize", "scroll-behavior", "scroll-margin", "scroll-margin-left", "scroll-margin-right",
+	"scroll-margin-top", "scroll-margin-bottom", "scroll-margin-inline-start", "scroll-margin-inline-end", "scroll-padding", "scroll-padding-left",
+	"scroll-padding-right", "scroll-padding-inline-start", "scroll-padding-inline-end", "scroll-padding-top", "scroll-padding-bottom", "scroll-snap-align",
+	"scroll-snap-stop", "scroll-snap-type", "touch-action", "user-select", "will-change"
+];
+
+
+// const startingBody = document.querySelector("div");
+// var rgbCatch = /rgba?\(.+\)/d;
+// const styleDocs = document.querySelector("style");
+// function tailwindIfier(computedCSS, elem, pE = "") {
+// 	const returnDict = {};
+// 	var ogColor = computedCSS["color"]
+	
+// 	for (i = 0; i < importantValues.length; i++) {
+// 		var v = importantValues[i]
+// 		if (v == "width" || v == "transform-origin" || v == "height" || v == "min-width") {
+// 			if (pE !== "") {
+// 				// styleDocs.innerHTML = `${elem.tagName.toLowerCase()}::${pE} { display:none !important; }`;
+// 				// if (pE == "marker" && elem.tagName == "LI") {
+// 				// 	console.log("MARKER LI")
+// 				// 	console.log(computedCSS["display"])
+// 				// 	console.log(v + ": ")
+// 				// 	console.log(computedCSS[v]);
+// 				// }
+// 				elem.setAttribute("style", "display:none;");
+// 				if (pE == "marker" && elem.tagName == "LI") {
+// 					console.log("MARKER LI")
+// 					console.log(computedCSS["display"])
+// 					console.log(v + "  (whole elem) : ")
+// 					console.log(computedCSS[v]);
+// 				}
+// 			} else {
+// 				elem.setAttribute("style", "display: none;")
+// 			}
+			
+// 		}
+		
+// 		if (rgbCatch.test(computedCSS[v]) && v !== "color" ) {
+// 			if (computedCSS[v].match(rgbCatch).some((col) => col == ogColor)) {
+// 				var importantIndices = []
+// 				rgbCatch.exec(computedCSS[v]).indices.forEach((ind, i) => {
+// 					if (ogColor == computedCSS[v].slice(ind[0],ind[1])) {
+// 						importantIndices.push(i);
+// 					}
+// 				})
+// 				if (pE !== "") {
+// 					styleDocs.innerHTML = `${elem.tagName.toLowerCase()}::${pE} { color: rgb(1,2,3); }`;
+// 				} else {
+// 					elem.setAttribute("style", "color: rgb(1,2,3)");
+// 				}
+				
+// 				// Match the 2, if the importantIndice is the same, then change it to currentcolor
+// 				var afterMatches = rgbCatch.exec(computedCSS[v]).indices;
+// 				// Idea: have fillers, so cut out the mids, and then put them in, essentially split them..
+// 				// for each indice, check if it is equal, and if it is, cut it out and leave the rest.
+// 				// 0 - 14 is equal, so leave 14 - end
+// 				// 14 - 56 is equal, so add the rest to the array
+// 				var joinArray = []
+// 				//After matches[importantIndices] are the indices to cut out
+// 				var endIndex = 0;
+// 				importantIndices.forEach((ii, indexOf) => {
+// 					var index = afterMatches[ii];
+// 					joinArray.push(computedCSS[v].slice(endIndex, index[0]))
+// 					endIndex = index[1];
+// 					if (indexOf == importantIndices.length - 1) {
+// 						joinArray.push(computedCSS[v].slice(endIndex, computedCSS[v].length))
+// 					} 	
+					
+// 				})
+// 				returnDict[v] = joinArray.join("currentcolor");
+// 				if (pE !== "") {
+// 					styleDocs.innerHTML = "";
+// 					elem.removeAttribute("style")
+// 				} else {
+// 					elem.removeAttribute("style");
+// 				}
+				
+// 				continue;
+
+// 				//end 19  new one 36 - last index
+
+// 			}
+// 		}
+
+// 		returnDict[v] = computedCSS[v];
+// 		if (pE !== "") {
+// 			elem.removeAttribute("style")
+// 			styleDocs.innerHTMl = "";
+// 		} else {
+// 			elem.removeAttribute("style")
+// 		}
+		
+// 	}
+// 	return returnDict;
+// }
+
+
+// const styles = {
+// 	"aspect-ratio": ["1 / 1", "16 / 9"],
+// 	"columns": ["auto", "2"],
+// 	"break-after": ["page", "avoid"],
+// 	"break-before": ["page", "avoid"],
+// 	"break-inside": ["avoid-page", "avoid"],
+// 	"box-decoration-break": ["clone", "slice"],
+// 	"box-sizing": ["border-box", "content-box"],
+// 	"display": ["flex", "block"],
+// 	"float": ["left", "right"],
+// 	"clear": ["left", "right"],
+// 	"isolation": ["isolate", "auto"],
+// 	"object-fit": ["cover", "contain"],
+// 	"object-position": ["50% 100%", "50% 0%"],
+// 	"overflow": ["hidden", "clip"],
+// 	"overflow-x": ["hidden", "clip"],
+// 	"overflow-y": ["hidden", "clip"],
+// 	"overscroll-behavior": ["contain", "none"],
+// 	"overscroll-behavior-x": ["contain", "none"],
+// 	"overscroll-behavior-y": ["contain", "none"],
+// 	"position": ["static", "relative"],
+// 	"inset": ["16px", "8px"],
+// 	"left": ["16px", "8px"],
+// 	"right": ["16px", "8px"],
+// 	"top": ["16px", "8px"],
+// 	"bottom": ["16px", "8px"],
+// 	"inset-inline": ["16px", "8px"],
+// 	"inset-block": ["16px", "8px"],
+// 	"visibility": ["visible", "hidden"],
+// 	"z-index": ["10", "30"],
+// 	"flex-basis": ["10px", "16px"],
+// 	"flex-direction": ["row", "column"],
+// 	"flex-wrap": ["wrap", "nowrap"],
+// 	"flex": ["1 1 auto", "1 1 0%"],
+// 	"flex-grow": ["1", "0"],
+// 	"flex-shrink": ["1", "0"],
+// 	"order": ["1", "2"],
+// 	"grid-template-columns": ["repeat(2, minmax(0, 1fr))", "subgrid"],
+// 	"grid-column": ["span 1 / span 1", "span 2 / span 2"],
+// 	"grid-column-start": ["1", "2"],
+// 	"grid-column-end": ["1", "2"],
+// 	"grid-template-rows": ["repeat(2, minmax(0, 1fr))", "subgrid"],
+// 	"grid-row": ["span 1 / span 1", "span 2 / span 2"],
+// 	"grid-row-start": ["1", "2"],
+// 	"grid-row-end": ["1", "2"],
+// 	"grid-auto-flow": ["dense", "column"],
+// 	"grid-auto-columns": ["min-content", "max-content"],
+// 	"grid-auto-rows": ["min-content", "max-content"],
+// 	"gap": ["2px", "4px"],
+// 	"column-gap": ["2px", "4px"],
+// 	"row-gap": ["2px", "4px"],
+// 	"justify-content": ["flex-start", "space-evenly"],
+// 	"justify-items": ["center", "stretch"],
+// 	"justify-self": ["center", "stretch"],
+// 	"align-content": ["center", "stretch"],
+// 	"align-items": ["center", "stretch"],
+// 	"align-self": ["center", "stretch"],
+// 	"place-content": ["center", "stretch"],
+// 	"place-items": ["center", "stretch"],
+// 	"place-self": ["center", "stretch"],
+// 	"padding": ["1px", "2px"],
+// 	"padding-left": ["1px", "2px"],
+// 	"padding-right": ["1px", "2px"],
+// 	"padding-top": ["1px", "2px"],
+// 	"padding-bottom": ["1px", "2px"],
+// 	"padding-inline-start": ["1px", "2px"],
+// 	"padding-inline-end": ["1px", "2px"],
+// 	"padding-block-start": ["1px", "2px"],
+// 	"padding-block-end": ["1px", "2px"],
+// 	"margin": ["1px", "2px"],
+// 	"margin-left": ["1px", "2px"],
+// 	"margin-right": ["1px", "2px"],
+// 	"margin-top": ["1px", "2px"],
+// 	"margin-bottom": ["1px", "2px"],
+// 	"margin-inline": ["1px", "2px"],
+// 	"margin-block": ["1px", "2px"],
+// 	"margin-inline-start": ["1px", "2px"],
+// 	"margin-inline-end": ["1px", "2px"],
+// 	"width": ["16px", "24px"],
+// 	"min-width": ["16px", "24px"],
+// 	"max-width": ["16px", "24px"],
+// 	"height": ["16px", "24px"],
+// 	"min-height": ["16px", "24px"],
+// 	"max-height": ["16px", "24px"],
+// 	"font-family": ["sans-serif", "serif"],
+// 	"font-size": ["10px", "16px"],
+// 	"line-height": ["2px", "5px"],
+// 	"font-style": ["italic", "normal"],
+// 	"font-weight": ["400", "700"],
+// 	"font-variant-numeric": ["ordinal", "tabular-nums"],
+// 	"letter-spacing": ["1px", "2px"],
+// 	"-webkit-box-orient": ["vertical", "horizontal"],
+// 	"-webkit-line-clamp": ["1", "3"],
+// 	"list-style-image": ["none", "url(icon.png)"],
+// 	"list-style-position": ["inside", "outside"],
+// 	"list-style-type": ["disc", "decimal"],
+// 	"text-align": ["center", "right"],
+// 	"color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"text-decoration-line": ["underline", "overline"],
+// 	"text-decoration-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"text-decoration-style": ["dashed", "solid"],
+// 	"text-decoration-thickness": ["2px", "4px"],
+// 	"text-underline-offset": ["1px", "2px"],
+// 	"text-transform": ["uppercase", "lowercase"],
+// 	"text-overflow": ["ellipsis", "clip"],
+// 	"white-space": ["normal", "nowrap"],
+// 	"text-indent": ["1px", "2px"],
+// 	"vertical-align": ["top", "middle"],
+// 	"overflow-wrap": ["normal", "break-word"],
+// 	"word-break": ["break-all", "keep-all"],
+// 	"hyphens": ["manual", "auto"],
+// 	"content": ["none", "'Hello World'"],
+// 	"background-attachment": ["fixed", "local"],
+// 	"background-clip": ["border-box", "content-box"],
+// 	"background-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"background-origin": ["padding-box", "content-box"],
+// 	"background-position": ["50% 0%", "50% 100%"],
+// 	"background-repeat": ["repeat-x", "no-repeat"],
+// 	"background-size": ["cover", "contain"],
+// 	"background-image": ["none", "linear-gradient(to right top, rgb(161, 161, 170), rgba(161, 161, 170, 0))"],
+// 	"border-radius": ["1px", "2px"],
+// 	"border-start-start-radius": ["1px", "2px"],
+// 	"border-end-start-radius": ["1px", "2px"],
+// 	"border-start-end-radius": ["1px", "2px"],
+// 	"border-end-end-radius": ["1px", "2px"],
+// 	"border-top-left-radius": ["1px", "2px"],
+// 	"border-top-right-radius": ["1px", "2px"],
+// 	"border-bottom-left-radius": ["1px", "2px"],
+// 	"border-bottom-right-radius": ["1px", "2px"],
+// 	"border-width": ["1px", "2px"],
+// 	"border-left-width": ["1px", "2px"],
+// 	"border-right-width": ["1px", "2px"],
+// 	"border-top-width": ["1px", "2px"],
+// 	"border-bottom-width": ["1px", "2px"],
+// 	"border-inline-start-width": ["1px", "2px"],
+// 	"border-inline-end-width": ["1px", "2px"],
+// 	"border-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-left-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-right-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-top-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-bottom-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-inline-start-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-inline-end-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"border-style": ["double", "solid"],
+// 	"outline-width": ["1px", "2px"],
+// 	"outline-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"outline-style": ["solid", "double"],
+// 	"outline": ["rgb(255, 255, 255) solid 1px", "rgb(3, 7, 18) double 2px"],
+// 	"outline-offset": ["1px", "2px"],
+// 	"box-shadow": ["rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px", "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 2px 4px 0px inset"],
+// 	"opacity": ["0.95", "0.9"],
+// 	"mix-blend-mode": ["multiply", "screen"],
+// 	"background-blend-mode": ["multiply", "screen"],
+// 	"filter": ["blur(8px)", "contrast(1)"],
+// 	"backdrop-filter": ["blur(4px)", "contrast(1)"],
+// 	"border-collapse": ["collapse", "seperate"],
+// 	"border-spacing": ["1px 1px", "2px 2px"],
+// 	"table-layout": ["auto", "fixed"],
+// 	"caption-side": ["top", "bottom"],
+// 	"transition-property": ["none", "color"],
+// 	"transition-timing-function": ["linear", "cubic-bezier(0.4, 0, 1, 1)"],
+// 	"transition-duration": ["0.1s", "0.5s"],
+// 	"transition-delay": ["0.1s", "0.5s"],
+// 	"animation": ['none', "1s linear 0s infinite normal none running spin"],
+// 	"transform": ["matrix(0.95, 0.309, -0.309, 0.95, 0, 0)", "none"],
+// 	"transform-origin": ["4px 0px", "0px 4px"],
+// 	"accent-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"appearance": ["none", "auto"],
+// 	"cursor": ["pointer", "move"],
+// 	"caret-color": ["rgb(255, 255, 255)", 'rgb(3, 7, 18)'],
+// 	"pointer-events": ["auto", "none"],
+// 	"resize": ["vertical", "horizontal"],
+// 	"scroll-behavior": ["auto", "smooth"],
+// 	"scroll-margin": ["1px", "2px"],
+// 	"scroll-margin-left": ["1px", "2px"],
+// 	"scroll-margin-right": ["1px", "2px"],
+// 	"scroll-margin-top": ["1px", "2px"],
+// 	"scroll-margin-bottom": ["1px", "2px"],
+// 	"scroll-margin-inline-start": ["1px", "2px"],
+// 	"scroll-margin-inline-end": ["1px", "2px"],
+// 	"scroll-padding": ["1px", "2px"],
+// 	"scroll-padding-left": ["1px", "2px"],
+// 	"scroll-padding-right": ["1px", "2px"],
+// 	"scroll-padding-inline-start": ["1px", "2px"],
+// 	"scroll-padding-inline-end": ["1px", "2px"],
+// 	"scroll-padding-top": ["1px", "2px"],
+// 	"scroll-padding-bottom": ["1px", "2px"],
+// 	"scroll-snap-align": ["center", "start"],
+// 	"scroll-snap-stop": ["normal", "always"],
+// 	"scroll-snap-type": ["x", "y"],
+// 	"touch-action": ["pan-y", "pan-x"],
+// 	"user-select": ["text", "all"],
+// 	"will-change": ["scroll-position", "contents"]
+// }
+// /* Print in this order to get information
+// 	1. Original Defaults - Div - current color
+// 	2. Specified Defaults - currentColor
+// 	3. Intersected Inheritance
+// 	4. Specified Inheritance
+// 	5. Pseudo-Specified Defaults - Current color
+// 	6. Pseudo Non Inheritance
+// 	7. Specified Pseudo Non-Inheritance
+// */
+
+// var originalDef;
+// var specDef;
+// var interInheritance;
+// var specInheritance;
+// var pseudoSpecDefault;
+// var pseudoNonInherited;
+// var specifiedPseudoNonInheritance;
+
+// function prettyPrint(dict, level=1) {
+// 	var string = "{\n"
+// 	var keys = Object.keys(dict);
+// 	keys.forEach((k) => {
+// 		const val = dict[k]
+// 		string += "\t".repeat(level) + "\"" + k.replace(/"/g, "\\\"") + "\" : ";
+// 		if (val.constructor == Object) {
+// 			string += prettyPrint(val, level+1);
+// 		} else if (val.constructor == String) {
+// 			// console.log(val.constructor)
+// 			string += "\"" + val.replace(/"/g, "\\\"") + "\"";
+// 		} else if (val.constructor == Set) {
+// 			string += "new Set(["
+// 			var i = 0;
+// 			val.forEach((v) => {
+// 				string += "\"" + v.replace(/"/g, "\\\"") + "\"" + (i == (val.size - 1) ? "" : ", ")
+// 				i++;
+// 			})
+// 			string += "])";
+// 		}
+// 		string += ",\n"
+// 	})
+// 	string += "\t".repeat(level - 1) + "}";
+// 	return string;
+// }
+
+// const tagDefaults = {}
+// allElements.forEach((e) => {
+// 	const elem = document.createElement(e);
+// 	startingBody.appendChild(elem);
+// 	const elemDict = tailwindIfier(window.getComputedStyle(elem), elem);
+// 	if (e == "div") {
+// 		originalDef = prettyPrint(elemDict);
+// 	}
+// 	const compareDict = {}
+// 	// Compare the two and then spit out the difference
+// 	Object.keys(original).forEach((k) => {
+// 		if (original[k] !== elemDict[k]) {
+// 			compareDict[k] = elemDict[k];
+// 		}
+// 	})
+// 	if (Object.entries(compareDict).length > 0) {
+// 		tagDefaults[e] = compareDict;
+// 	}
+// 	elem.remove();
+// }) 
+// specDef = prettyPrint(tagDefaults);
+
+
+
+
+// const parent = document.querySelector("div");
+// const elemInheritance = {}
+// allElements.forEach((e) => {
+// 	const child = document.createElement(e);
+// 	// console.log(child);
+// 	const inheritedVals = new Set();
+// 	parent.append(child);
+	
+// 	const parentComputed = window.getComputedStyle(parent);
+// 	const childComputed = window.getComputedStyle(child);
+// 	importantValues.forEach((v) => {
+// 		if (v == "width" || v == "height" || v == "transform-origin") {
+// 			parent.setAttribute("style", "display: none;");
+// 			child.setAttribute("style", "display: none;");
+// 		}
+
+// 		if (parentComputed[v] == childComputed[v]) {
+// 			var option = 0;
+// 			if (styles[v][option] == parentComputed[v]) {
+// 				option++;
+// 			}
+			
+// 			//Fix for width and height 
+// 			parent.setAttribute("style", ((v == "width" || v == "height" || v == "transform-origin") ? "display: none;" : "") + v + " : " + styles[v][option] + ";");
+
+// 			if (parentComputed[v] == childComputed[v]) {
+// 				inheritedVals.add(v)
+// 			}
+			
+// 		}
+// 		parent.removeAttribute("style");
+// 		child.removeAttribute("style");
+
+// 	});
+// 	elemInheritance[e.toLowerCase()] = inheritedVals;
+// 	// console.log(inheritedVals)
+
+// 	child.remove();
+// })
+// function intersectionOfSet(set1, set2) {
+// 	var returnSet = new Set();
+// 	var iterationSet = set1.size >= set2.size ? set2 : set1;
+// 	var biggerSet = set1.size < set2.size ? set2 : set1;
+// 	iterationSet.forEach((v) => {
+// 		if (biggerSet.has(v)) {
+// 			returnSet.add(v);
+// 		}
+// 	}) 
+// 	return returnSet;
+// }
+
+// function differenceOfSet(set, negativeSet) {
+// 	var returnSet = new Set();
+// 	set.forEach((v) => {
+// 		if (!negativeSet.has(v)) {
+// 			returnSet.add(v);
+// 		}
+// 	})
+// 	return returnSet;
+// }
+// var interSet;
+// Object.values(elemInheritance).forEach(sets => {
+// 	if (!interSet) {
+// 		interSet = new Set(sets)
+// 	}
+// 	interSet = intersectionOfSet(interSet, sets);
+// })
+// var printStr = "[\n";
+// interSet.forEach((v) => {
+// 	printStr+= "\t\"" + v + "\", \n";
+// })
+// printStr+= "]";
+// interInheritance = printStr;
+
+// var specifiedInheritance = "{\n"
+// Object.keys(elemInheritance).forEach((elem) => {
+// 	const setItem = differenceOfSet(elemInheritance[elem], interSet);
+// 	if (setItem.size > 0) {
+// 		specifiedInheritance += "\t\"" + elem + "\" : new Set([";
+// 		setItem.forEach((v) => {specifiedInheritance += "\"" + v + "\", "});
+// 		specifiedInheritance += "]),\n"
+// 	} else {
+// 	}
+// });
+
+// specInheritance = specifiedInheritance+"}";
+
+// //fix for width and height
+// const pseudoOriginals = {}
+// pseudoElems.forEach(pE => {
+// 	const specificOriginal = {};
+// 	allElements.forEach(e => {
+// 		const child = document.createElement(e);
+// 		startingBody.append(child);
+// 		const computedPE = window.getComputedStyle(child, "::" + pE);
+// 		const startingPeCSS = tailwindIfier(computedPE, child, pE);
+// 		const specificElemOriginal = {};
+// 		importantValues.forEach(v => {
+// 			if (original[v] != startingPeCSS[v]) {
+// 				specificElemOriginal[v] = startingPeCSS[v];
+// 			}
+// 		})
+// 		if (Object.keys(specificElemOriginal).length > 0) {
+// 			specificOriginal[e] = specificElemOriginal; 
+// 		}
+// 		child.remove();
+// 	});
+// 	if (Object.keys(specificOriginal).length == 0) {
+// 	}
+// 	pseudoOriginals[pE] = specificOriginal;
+// });
+
+// pseudoSpecDefault = prettyPrint(pseudoOriginals);
+
+// // Adapt for afters
+// // Afters can not have inline styles. May have to implement our own css styles using the style head element
+// // const styleDocs = document.querySelector("style");
+// // const afters = {};
+// // allElements.forEach((e) => {
+// // 	const child = document.createElement(e);
+// // 	startingBody.appendChild(child);
+// // 	const startingAfterCSS = window.getComputedStyle(child, ":before");
+// // 	if (e == "div") {
+// // 		const arr = {};
+// // 		importantValues.forEach(v => {
+// // 			arr[v] = startingAfterCSS[v];
+// // 		})
+// // 		console.log(prettyPrint(arr));
+// // 	}
+// // 	const certainElemDict = {}
+// // 	importantValues.forEach(v => {
+// // 		if (originalAfter[v] != startingAfterCSS[v]) {
+// // 			certainElemDict[v] = startingAfterCSS[v];
+// // 		}
+		
+// // 	})
+// // 	if (Object.keys(certainElemDict).length > 0) {
+// // 		afters[e] = certainElemDict;
+// // 	}
+	
+// // 	child.remove();
+	
+// // })
+// // console.log(prettyPrint(afters))
+
+
+
+
+// 	/* Check for inherited val, change val to something else, and then see if it coordinates with the child.
+// 		Every val has different set vals, so this would be quite weird. Would require to have before and after vals for everything, and to make sure that you have secondary vals,
+// 		just incase the other val is already it's default. This is possible, but pretty time consuming.
+// 	*/
+	
+// 	/* Pseudo Elements have a main inheritance, different from the reg elements. They will have a much longer inheritance list. */
+// 	var pseudoElemInheritance = {}
+// 	var overallSet = new Set([ "grid-column", "grid-column-start", "grid-column-end", "grid-row", "grid-row-start", "grid-row-end", "transition-property", "animation", "will-change"])
+// 	pseudoElems.forEach(pE => {
+// 		const pseudoElemElem = {}
+// 		allElements.forEach(elem => {
+// 			const specificElemSet = new Set();
+// 			const newChild = document.createElement(elem);
+// 			startingBody.appendChild(newChild);
+// 			const computed = window.getComputedStyle(newChild);
+// 			const computedPE = window.getComputedStyle(newChild, "::" + pE);
+// 			importantValues.forEach(val => {
+// 				if (computed[val] !== computedPE[val]) {
+// 					if (pE == "after") {
+// 						console.log("Value: " + val + "; Elem: " + elem + "; pE: " + pE +";")
+// 					}
+// 					specificElemSet.add(val)
+// 				} else {
+// 					var option = 0;
+// 					if (styles[option] == computed[val]) {
+// 						option++;
+// 					}
+// 					newChild.setAttribute("style", val + " : " + styles[option]);
+// 					if (computed[val] !== computedPE[val] && !overallSet.has(val)) {
+// 						specificElemSet.add(val);
+// 					}
+// 					newChild.removeAttribute("style")
+// 				}
+// 			})
+// 			// Original Style
+// 			// Check if psuedoStyle is equal to original, if it is continue
+// 			// Change up style, if style is equal to the first option, change to second
+// 			// Check if pseudo is still equal 
+// 			// If equal, add to 
+// 			if (specificElemSet.size == 0) {
+// 			}
+// 			pseudoElemElem[elem] = specificElemSet;
+// 			newChild.remove();
+// 		});
+// 		pseudoElemInheritance[pE] = pseudoElemElem;
+// 	});
+	
+// 	pseudoNonInherited = overallSet;
+// 	specifiedPseudoNonInheritance = prettyPrint(pseudoElemInheritance);
+
+// 	console.log("Original Defaults: ");
+// 	console.log(originalDef);
+// 	console.log("Specified Defaults: ");
+// 	console.log(specDef);
+// 	console.log("Intersected Inheritance: ");
+// 	console.log(interInheritance);
+// 	console.log("Specified Inheritance: ");
+// 	console.log(specInheritance);
+// 	console.log("Pseudo-Specific Defaults: ");
+// 	console.log(pseudoSpecDefault);
+// 	console.log("Pseudo Non-Inherited: ");
+// 	console.log(pseudoNonInherited);
+// 	console.log("Specified Pseudo-Specific Non Inheritance: ");
+// 	console.log(specifiedPseudoNonInheritance);
+
+// 	// Display Transformation Dictionaries
+// 	const differentDisplayVals = ["block", "inline", "run-in" ,"flow", "flow-root", "table", "flex", "grid", "ruby", "table-row-group", "table-header-group", "table-footer-group", "table-row", "table-cell", "table-column-group", "table-column", "table-caption", "ruby-base", "ruby-base-container", "ruby-text-container", "contents", "none", "inline-block", "inline-table", "inline-grid", "inline-flex"]
+// 	const overallElem = {}
+// 	pseudoElems.forEach(pE => {
+// 		const pseudoElemElem = {}
+// 		allElements.forEach(elem => {
+// 			const specificElemTransformDict = {}
+// 			const newChild = document.createElement(elem);
+// 			startingBody.appendChild(newChild);
+// 			const computed = window.getComputedStyle(newChild);
+// 			const computedPe = window.getComputedStyle(newChild, "::" + pE)
+// 			differentDisplayVals.forEach((dv) => {
+// 				newChild.setAttribute("style", "display: " + dv + ";");
+// 				if (specificElemTransformDict[computed["display"]] && computedPe["display"] != specificElemTransformDict[computed["display"]]) {
+// 					console.log("Overlap Summary, (" +  dv + ") :\n Previous Map:\n\t\"" + computed["display"] + "\" : \"" + specificElemTransformDict[computed["display"]] + "\"\n New Map:\n\t\"" + computed["display"] + "\" : \"" + computedPe["display"])
+// 				} else {
+// 					specificElemTransformDict[computed["display"]] = computedPe["display"]
+// 					//placeholder, backdrop, file-selector-button, marker, selection, first-line, first-letter all have fixed displays.
+// 					//before, optgroup, has weird settings for its display
+// 					if ((computed["display"].includes("grid") || computed["display"].includes("flex")) && computedPe["display"] != "block" && pE != "placeholder" && pE != "backdrop" && pE != "file-selector-button" && !(pE == "marker" || pE == "selection" || pE == "first-line" || pE == "first-letter")) {
+// 						console.log(pE + "\n" + elem + "\n" + computed["display"]  + "\n" + computedPe["display"] + "\n" + "NOT BLOCK");
+// 					}
+// 					if ((!computed["display"].includes("grid") && !computed["display"].includes("flex")) && computedPe["display"] != "inline" && pE != "placeholder" && pE != "backdrop" && pE != "file-selector-button" && !(pE == "marker" || pE == "selection" || pE == "first-line" || pE == "first-letter")) {
+						
+// 						console.log(pE + "\n" + elem + "\n" + computed["display"]  + "\n" + computedPe["display"] + "\n" + "NOT INLINE!");
+// 					}
+				
+// 					if ((pE == "marker" || pE == "selection" || pE == "first-line" || pE == "first-letter") && computedPe["display"] != "inline") {
+// 						console.log("hey")
+// 					}
+					
+// 				}
+// 				newChild.removeAttribute("style");
+// 			})
+// 			pseudoElemElem[elem] = specificElemTransformDict;
+// 			newChild.remove();
+// 		});
+// 		overallElem[pE] = pseudoElemElem;
+// 	});
+	
+// 	console.log(prettyPrint(overallElem))
+
+	const divObj = document.querySelector("div");
+
+	function executionTime(func) {
+		var startTime = Date.now();
+		func();
+		const returnTime = (Date.now() - startTime);
+		console.log("Execution Time: " + returnTime + "ms")
+		return returnTime;
+	
+	}	
+
+	const computed = window.getComputedStyle(divObj, "::after");
+	executionTime(() => {
+		var computedCopy = {}
+		importantValues.forEach((v,i) => {
+			computedCopy[v] = computed[v];
+		});
+	})
+
+
+    
+</script>
+</html>

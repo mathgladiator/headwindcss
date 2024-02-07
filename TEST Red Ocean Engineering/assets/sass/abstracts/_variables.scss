@@ -1,0 +1,30 @@
+$primary: #FFF;
+$secondary: #DD1F26;
+$tertiary: #979797;
+
+$breakpoints: (
+    "xxl": (
+        "max": 3024px,
+        "min": 1921px,
+    ),
+    "xl": (
+        "max": 1920px,
+        "min": 1280px,
+    ),
+    "lg": (
+        "max": 1440px,
+        "min": 1280px,
+    ),
+    "md": (
+        "max": 1119px,
+        "min": 992px,
+    ),
+    "sm": (
+        "max": 991px,
+        "min": 768px,
+    ),
+    "xs": (
+        "max": 767px,
+        "min": 320px,
+    ),
+) !default;
